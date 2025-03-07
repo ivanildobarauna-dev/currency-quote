@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Python tests in /Users/ivsouza/Github/ivdatahub/currency-quote/tests" type="tests" factoryName="Autodetect" nameIsGenerated="true">
+  <configuration default="false" name="Python tests in /Users/ivsouza/github.com/ivanildobarauna-dev/currency-quote/tests" type="tests" factoryName="Autodetect" nameIsGenerated="true">
     <module name="currency-quote-wrapper" />
     <option name="ENV_FILES" value="" />
     <option name="INTERPRETER_OPTIONS" value="" />
