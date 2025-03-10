@@ -7,16 +7,23 @@ from currency_quote.application.ports.outbound.currency_repository import (
 )
 from currency_quote.config.endpoints import API
 from currency_quote.domain.entities.currency import CurrencyQuote, CurrencyObject
+from currency_quote.utils.open_observability import inject_context_into_headers, trace_span
 
 
 class CurrencyAPI(ICurrencyRepository):
     def __init__(self, currency_obj: CurrencyObject):
         self.currency_list = currency_obj.get_currency_list()
 
+    @trace_span
     def get_last_quote(self) -> List[CurrencyQuote]:
         url = f"{API.ENDPOINT_LAST_COTATION}{','.join(self.currency_list)}"
+        headers = {}
+        inject_context_into_headers(headers)
+        
         client = ClientBuilder(
-            endpoint=url, retry_strategy=RetryStrategies.EXPONENTIAL_RETRY_STRATEGY
+            endpoint=url, 
+            retry_strategy=RetryStrategies.EXPONENTIAL_RETRY_STRATEGY,
+            headers=headers
         )
 
         response = client.get_api_data()
@@ -39,6 +46,7 @@ class CurrencyAPI(ICurrencyRepository):
 
         return quote_list
 
+    @trace_span
     def get_history_quote(self, reference_date: int) -> List[CurrencyQuote]:
         today = int(datetime.today().strftime("%Y%m%d"))
 
@@ -58,8 +66,13 @@ class CurrencyAPI(ICurrencyRepository):
                 f"?start_date={reference_date}&end_date={reference_date}"
             )
 
+            headers = {}
+            inject_context_into_headers(headers)
+            
             client = ClientBuilder(
-                endpoint=url, retry_strategy=RetryStrategies.EXPONENTIAL_RETRY_STRATEGY
+                endpoint=url, 
+                retry_strategy=RetryStrategies.EXPONENTIAL_RETRY_STRATEGY,
+                headers=headers
             )
 
             response = client.get_api_data()

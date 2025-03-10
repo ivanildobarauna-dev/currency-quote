@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "currency-quote"
-version = "4.1.0"
+version = "4.2.0"
 description = "Complete solution for extracting currency pair quotes data. With comprehensive testing, parameter validation, flexible configuration management, Hexagonal Architecture, CI/CD pipelines, code quality tools, and detailed documentation."
 authors = ["IvanildoBarauna <ivanildo.jnr@outlook.com>"]
 readme = "README.md"
@@ -30,8 +30,8 @@ include = ["currency_quote*"]
 [tool.poetry.dependencies]
 python = "^3.9"
 pytest = "^8.3.4"
-api-to-dataframe = "^1.4.0"
-otel-wrapper = "^0.0.1"
+otel-wrapper = "^0.1.1"
+api-to-dataframe = "^1.5.2"
 
 [tool.poetry.group.dev.dependencies]
 coverage = "^7.5.4"
