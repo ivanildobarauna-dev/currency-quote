@@ -3,10 +3,12 @@ from typing import List
 from currency_quote.adapters.outbound.currency_api import CurrencyAPI
 from currency_quote.domain.services.get_currency_quote import GetCurrencyQuoteService
 from currency_quote.domain.entities.currency import CurrencyObject, CurrencyQuote
+from currency_quote.utils.open_observability import trace_span
 
 
 class GetHistCurrencyQuoteUseCase:
     @staticmethod
+    @trace_span
     def execute(
         currency_obj: CurrencyObject, reference_date: int
     ) -> List[CurrencyQuote]:

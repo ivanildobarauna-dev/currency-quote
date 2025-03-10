@@ -15,20 +15,20 @@ files = [
 
 [[package]]
 name = "api-to-dataframe"
-version = "1.4.0"
+version = "1.5.1"
 description = "A package to convert API responses to pandas dataframe"
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
 markers = "python_version <= \"3.11\" or python_version >= \"3.12\""
 files = [
-    {file = "api_to_dataframe-1.4.0-py3-none-any.whl", hash = "sha256:07ba1cf53d85f0cbf0cb9a82264e8a4aceaf266a0328e0bfb6880b2806591484"},
-    {file = "api_to_dataframe-1.4.0.tar.gz", hash = "sha256:869b29a46807ed40c327f0298d9a35c5dd2f112fc3bfc33a35ce5ab15c146bd2"},
+    {file = "api_to_dataframe-1.5.1-py3-none-any.whl", hash = "sha256:c798043ee42f9f4e02ce54ed649c91cd87d8c0b9684b25ea2cfc725954dc3442"},
+    {file = "api_to_dataframe-1.5.1.tar.gz", hash = "sha256:e6f19c36b03ad354e010aae4ec70195256c1e9a386750a6d28aa62367920c27f"},
 ]
 
 [package.dependencies]
 logging = ">=0.4.9.6,<0.5.0.0"
-otel-wrapper = ">=0.0.1,<0.0.2"
+otel-wrapper = ">=0.1.1,<0.2.0"
 pandas = ">=2.2.3,<3.0.0"
 requests = ">=2.32.3,<3.0.0"
 
@@ -997,15 +997,15 @@ files = [
 
 [[package]]
 name = "otel-wrapper"
-version = "0.0.1"
+version = "0.1.1"
 description = "OpenTelemetry Wrapper to send traces, metrics and logs to my otel-proxy using OTLP Protocol"
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
 markers = "python_version <= \"3.11\" or python_version >= \"3.12\""
 files = [
-    {file = "otel_wrapper-0.0.1-py3-none-any.whl", hash = "sha256:869231960e7b9e1ee8ed293f2a11f9719bcd9f52b5b6da1bf9d581e3701658fd"},
-    {file = "otel_wrapper-0.0.1.tar.gz", hash = "sha256:f5b39c3fd636ce766a5935ace1cc40396be950e50acb33781bccdab42577ef35"},
+    {file = "otel_wrapper-0.1.1-py3-none-any.whl", hash = "sha256:ec9454ef62b7ff849bda3523f9c6f84d8c0fd76f77c0b1e3d7bd67eeebb4a49a"},
+    {file = "otel_wrapper-0.1.1.tar.gz", hash = "sha256:84c8c55af24a8bc87dd2f14435f4593e7c635e8ecdbca4bacfc2e34b2cd8e10c"},
 ]
 
 [package.dependencies]
@@ -1679,4 +1679,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.9"
-content-hash = "7db4b6df1ee4e5dc96aea8383aad0ec10acadadf2eec23911355053d99cdc5ac"
+content-hash = "8d938ed34c24e21a26fd04f083eefb9bc05a9cc43663815b51f8a3aed0d5f460"
