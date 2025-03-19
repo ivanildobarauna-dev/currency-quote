@@ -7,23 +7,20 @@ from currency_quote.application.ports.outbound.currency_repository import (
 )
 from currency_quote.config.endpoints import API
 from currency_quote.domain.entities.currency import CurrencyQuote, CurrencyObject
-from currency_quote.utils.open_observability import inject_context_into_headers, trace_span
+from currency_quote.utils.logger import get_logger
 
+logger = get_logger("currency_api")
 
 class CurrencyAPI(ICurrencyRepository):
+    """Repository implementation for fetching currency quotes from external API."""
     def __init__(self, currency_obj: CurrencyObject):
         self.currency_list = currency_obj.get_currency_list()
 
-    @trace_span
     def get_last_quote(self) -> List[CurrencyQuote]:
         url = f"{API.ENDPOINT_LAST_COTATION}{','.join(self.currency_list)}"
-        headers = {}
-        inject_context_into_headers(headers)
-        
+
         client = ClientBuilder(
-            endpoint=url, 
-            retry_strategy=RetryStrategies.EXPONENTIAL_RETRY_STRATEGY,
-            headers=headers
+            endpoint=url, retry_strategy=RetryStrategies.EXPONENTIAL_RETRY_STRATEGY
         )
 
         response = client.get_api_data()
@@ -46,7 +43,6 @@ class CurrencyAPI(ICurrencyRepository):
 
         return quote_list
 
-    @trace_span
     def get_history_quote(self, reference_date: int) -> List[CurrencyQuote]:
         today = int(datetime.today().strftime("%Y%m%d"))
 
@@ -55,24 +51,17 @@ class CurrencyAPI(ICurrencyRepository):
             or reference_date == today
             or len(str(reference_date)) != 8
         ):
-            print("[currency-quote] Invalid reference date")
+            logger.error("Invalid reference date: %d", reference_date)
             return []
 
         quote_list = []
 
         for item in self.currency_list:
-            url = (
-                f"{API.ENDPOINT_HISTORY_COTATION}{item}"
-                f"?start_date={reference_date}&end_date={reference_date}"
-            )
+            url = (f"{API.ENDPOINT_HISTORY_COTATION}{item}"
+                   f"?start_date={reference_date}&end_date={reference_date}")
 
-            headers = {}
-            inject_context_into_headers(headers)
-            
             client = ClientBuilder(
-                endpoint=url, 
-                retry_strategy=RetryStrategies.EXPONENTIAL_RETRY_STRATEGY,
-                headers=headers
+                endpoint=url, retry_strategy=RetryStrategies.EXPONENTIAL_RETRY_STRATEGY
             )
 
             response = client.get_api_data()
