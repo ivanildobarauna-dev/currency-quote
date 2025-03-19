@@ -30,8 +30,7 @@ include = ["currency_quote*"]
 [tool.poetry.dependencies]
 python = "^3.9"
 pytest = "^8.3.4"
-otel-wrapper = "^0.1.1"
-api-to-dataframe = "^1.5.2"
+api-to-dataframe = "^2.0.0"
 
 [tool.poetry.group.dev.dependencies]
 coverage = "^7.5.4"
