@@ -2,14 +2,14 @@
 
 [[package]]
 name = "api-to-dataframe"
-version = "2.0.0"
+version = "2.0.1"
 description = "A package to convert API responses to pandas dataframe"
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
 files = [
-    {file = "api_to_dataframe-2.0.0-py3-none-any.whl", hash = "sha256:0efb4c2bb7b7f8ac3e529cc26c035df7fcfded775b99a8a2e708defb288b3547"},
-    {file = "api_to_dataframe-2.0.0.tar.gz", hash = "sha256:3b8f112383f4a16333150beccf95ba70d093c4124901e2ece02afed99d316413"},
+    {file = "api_to_dataframe-2.0.1-py3-none-any.whl", hash = "sha256:9aa4fbbf2ed96a85f1eef3d7ec93ad7996d454c4cf19eb0595dafb50d8ce5941"},
+    {file = "api_to_dataframe-2.0.1.tar.gz", hash = "sha256:d69d5569767be49170403ef37060f47d7bbd91f48c6feba53a87706997f803c3"},
 ]
 
 [package.dependencies]
